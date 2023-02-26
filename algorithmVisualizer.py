@@ -1,5 +1,7 @@
 import tkinter as tk
-
+import numpy as np
+import matplotlib.pyplot as plt
+import time
 
 class AlgorithmVisualizer(tk.Frame):
     
@@ -54,12 +56,22 @@ class BubbleSort(Page):
         label = tk.Label(self, text="This is Bubble Sort")
         label.pack()
 
-        textbox = tk.Text(self)
-        textbox.pack()
         
     def visualize_bubble_sort(self, buttonFrame):
         self.show(buttonFrame)
         print("This is bubble sort")
+
+        values = np.random.randint(0, 100, 15)
+        x = np.arange(0, 15, 1) # Get values 0-14
+
+        for i in range(len(values)):
+            for j in range(0, len(values)-i-1):
+                plt.bar(x, values)
+                plt.pause(0.25)
+                plt.clf()
+                if values[j] > values[j+1]:
+                    values[j], values[j+1] = values[j+1], values[j]
+
 
 class SelectionSort(Page):
 
@@ -82,6 +94,7 @@ class InsertionSort(Page):
     def visualize_insertion_sort(self, buttonFrame):
         self.show(buttonFrame)
         print("This is insertion sort")
+                
 
 if __name__ == "__main__":
     print("Starting program")
