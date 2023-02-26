@@ -94,7 +94,26 @@ class InsertionSort(Page):
     def visualize_insertion_sort(self, buttonFrame):
         self.show(buttonFrame)
         print("This is insertion sort")
-                
+
+        values = np.random.randint(0, 100, 15)
+        x = np.arange(0, 15, 1) # Get values 0-14
+
+        if (n := len(values)) <= 1:
+            return
+        for i in range(1, n):
+            
+            key = values[i]
+    
+            j = i-1
+            while j >=0 and key < values[j] :
+                    values[j+1] = values[j]
+                    j -= 1
+            values[j+1] = key
+
+            plt.bar(x, values)
+            plt.pause(0.25)
+            plt.clf()
+                    
 
 if __name__ == "__main__":
     print("Starting program")
