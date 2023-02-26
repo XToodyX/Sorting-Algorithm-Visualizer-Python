@@ -84,6 +84,23 @@ class SelectionSort(Page):
         self.show(buttonFrame)
         print("This is selection Sort")
 
+        values = np.random.randint(0, 100, 15)
+        x = np.arange(0, 15, 1) # Get values 0-14
+
+        for ind in range(len(values)):
+            min_index = ind
+    
+            for j in range(ind + 1, len(values)):
+                # select the minimum element in every iteration
+                if values[j] < values[min_index]:
+                    min_index = j
+            # swapping the elements to sort the array
+            (values[ind], values[min_index]) = (values[min_index], values[ind])
+
+            plt.bar(x, values)
+            plt.pause(0.25)
+            plt.clf()
+
 class InsertionSort(Page):
 
     def __init__(self):
